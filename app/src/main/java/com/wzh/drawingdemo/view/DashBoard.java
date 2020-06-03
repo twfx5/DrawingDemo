@@ -39,13 +39,13 @@ public class DashBoard extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(Utils.dp2px(2));
 
-        // 矩形path CW 顺时针
+        // 添加矩形path，Path.addRect()， CW 顺时针
         // 从圆弧的切点处画矩形
         dash.addRect(0, 0, Utils.dp2px(2), Utils.dp2px(10), Path.Direction.CW);
-        // 圆弧path
+        // 添加圆弧Path
         arc.addArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS, getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS,
                 90 + ANGLE / 2, 360 - ANGLE);
-        // 测量圆弧的长度，PathMeasure用来测量长度
+        // 测量圆弧Path的长度，PathMeasure用来测量长度
         PathMeasure pathMeasure = new PathMeasure(arc, false);
         //————————————————
         // PathDashPathEffect表示用shape来绘制path
