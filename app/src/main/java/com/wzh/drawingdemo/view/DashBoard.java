@@ -69,7 +69,8 @@ public class DashBoard extends View {
                 90 + ANGLE / 2, 360 - ANGLE, false, paint);
         paint.setPathEffect(null); // 关掉PathEffect
 
-        // 画指针
+        // 画指针 x偏移量cos、y偏移量sin
+        // Math.toRadians 把角度转为弧度
         canvas.drawLine(getWidth() / 2, getHeight() / 2,
                 (float) Math.cos(Math.toRadians(getAngleFromMark(5))) * LENGTH + getWidth() / 2,
                 (float) Math.sin(Math.toRadians(getAngleFromMark(5))) * LENGTH + getHeight() / 2,

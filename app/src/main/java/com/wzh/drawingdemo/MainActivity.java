@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.wzh.drawingdemo.fragments.Demo1;
 import com.wzh.drawingdemo.fragments.Demo2;
 import com.wzh.drawingdemo.fragments.Demo3;
+import com.wzh.drawingdemo.fragments.Demo4;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> listFragment = new ArrayList<Fragment>();
 //        listFragment.add(new Demo1());
 //        listFragment.add(new Demo2());
-        listFragment.add(new Demo3());
+//        listFragment.add(new Demo3());
+        listFragment.add(new Demo4());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         MyFragmentAdapter fragmentAdapter = new MyFragmentAdapter(fragmentManager);
