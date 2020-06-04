@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -15,6 +15,7 @@ import com.wzh.drawingdemo.Utils;
 
 public class PieChart extends View {
 
+    private static final String TAG = "PieChart";
     private static final int RADIUS = (int) Utils.dp2px(120); // 半径
     private static final int LENGTH = (int) Utils.dp2px(20); // 第三个饼图偏移距离
 
@@ -33,15 +34,30 @@ public class PieChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.e(TAG, "onMeasure: ");
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        Log.e(TAG, "onLayout: ");
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        Log.e(TAG, "onSizeChanged: ");
         bounds.set(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS, getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.e(TAG, "onDraw: ");
         paint.setColor(Color.GREEN);
         canvas.drawArc(bounds, 0, 60, true, paint);
 

@@ -3,10 +3,13 @@ package com.wzh.drawingdemo.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.Button;
+
+import com.wzh.drawingdemo.Utils;
 
 
 public class ProgressButton extends Button {
@@ -19,6 +22,7 @@ public class ProgressButton extends Button {
     private boolean mFinish;
     private GradientDrawable mDrawableButton = new GradientDrawable();
     private GradientDrawable mDrawableProgress = new GradientDrawable(); // 进度条颜色
+    private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public ProgressButton(Context context) {
         super(context);
@@ -37,28 +41,31 @@ public class ProgressButton extends Button {
         mDrawableProgress.setCornerRadii(new float[]{0,0,30,30,30,30,30,30});
         mDrawableButton.setColor(Color.BLACK);
         mDrawableProgress.setColor(Color.RED);
-
+        paint.setTextSize(50);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        // 先绘制的内容(背景)
         super.onDraw(canvas);
-        if (mProgress > mMinProgress && mProgress <= mMaxProgress && !mFinish) {
-            //Calculate the width of progress
+        // 再绘制的内容
+        if (!mFinish) {
+            // 计算进度
             int progressWidth = (int) (mProgress * getMeasuredWidth() * 0.01);
-
-            //Set rect of progress
+            // 设置进度
             mDrawableProgress.setBounds(0, 0, progressWidth , getMeasuredHeight());
-            //Draw progress
+            // 绘制进度
             mDrawableProgress.draw(canvas);
-
+            canvas.drawText(mProgress + "%", getWidth() / 2 - Utils.dp2px(20), getHeight() / 2 + Utils.dp2px(8), paint);
+            Log.d(TAG, "onDraw: " + mProgress);
             if (mProgress >= mMaxProgress) {
-                setBackgroundDrawable(mDrawableProgress);
+                setBackground(mDrawableProgress);
                 mFinish = true;
-            } else {
-                setBackgroundDrawable(mDrawableButton);
             }
+        } else {
+            canvas.drawText("100%", getWidth() / 2 - Utils.dp2px(20), getHeight() / 2 + Utils.dp2px(8), paint);
         }
+
     }
 
     public void setProgress(int progress) {

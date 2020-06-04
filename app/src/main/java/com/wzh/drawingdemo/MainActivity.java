@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> listFragment = new ArrayList<Fragment>();
 //        listFragment.add(new Demo1());
 //        listFragment.add(new Demo2());
-//        listFragment.add(new Demo3());
-        listFragment.add(new Demo4());
+        listFragment.add(new Demo3());
+//        listFragment.add(new Demo4());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         MyFragmentAdapter fragmentAdapter = new MyFragmentAdapter(fragmentManager);
