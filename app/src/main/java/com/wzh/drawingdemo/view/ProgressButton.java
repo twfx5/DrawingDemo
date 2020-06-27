@@ -7,12 +7,11 @@ import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.Button;
 
 import com.wzh.drawingdemo.Utils;
 
 
-public class ProgressButton extends Button {
+public class ProgressButton extends androidx.appcompat.widget.AppCompatButton {
 
     private static final String TAG = "ProgressButton";
 

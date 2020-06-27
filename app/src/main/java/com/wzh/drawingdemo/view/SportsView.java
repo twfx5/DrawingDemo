@@ -16,6 +16,8 @@ import com.wzh.drawingdemo.Utils;
 /**
  * 文字居中的显示
  *
+ * 文字BaseLine设置的两种方法：Paint.getTextBounds 和 Paint.FontMetrics
+ *
  * 文字的左对齐显示
  */
 public class SportsView extends View {
